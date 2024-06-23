@@ -47,6 +47,16 @@ def mov_rating(user, movie, score):
 
     return rating 
 
+def look_up_movie_rating(user_id):
+
+    rated_movies=Rating.query.filter(Rating.user_id == user_id).all()
+    return rated_movies
+
+def look_up_movie_rating_by_movie_id(movie_id):
+
+    rated_movies=Rating.query.filter(Rating.movie_id == movie_id).all()
+    return rated_movies
+
 def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()

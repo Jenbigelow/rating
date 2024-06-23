@@ -10,4 +10,21 @@
 </p>
 
 <img class="poster" src="{{ movie.poster_path }}">
+<form action="/ratings/{{ movie.movie_id }}" method="POST">
+  <p>
+   <label for="score" >Rating </label><select name = "score">
+      {% for num in range(5)%}
+      <option value = {{ num+1 }}>{{ num+1 }}
+        {% endfor %}
+    </select>
+  </p>
+
+  <p>
+    <button type="submit">Rate</button>
+  </p>
+</form>
+
+{% for rating in ratings%}
+<li>{{rating.user.email }}: {{ rating.score }}</li>
+{% endfor %}
 {% endblock %}
